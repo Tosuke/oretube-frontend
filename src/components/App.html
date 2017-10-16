@@ -1,12 +1,17 @@
-<input bind:value="name" placeholder="enter your name">
-<h1>Hello {{name || "stranger"}}</h1>
+<h1>Oretube</h1>
+<Video src={{url}}/>
 
 <script>
   import config from '../config'
+  import Video from './Video.html'
   export default {
+    components: {
+      Video
+    },
     data() {
       return {
-        name: config.defaultName
+        name: config.defaultName,
+        url: config.videoUrl
       }
     }
   }

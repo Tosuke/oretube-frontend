@@ -12,7 +12,9 @@ export const baseConfig = {
 
 export const basePlugins = [
   nodeResolve(),
-  commonjs(),
+  commonjs({
+    include: 'node_modules/**',
+  }),
   svelte({
     include: 'src/components/**/*.html',
     exlude: 'node_modules/**',

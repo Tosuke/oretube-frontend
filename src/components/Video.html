@@ -1,0 +1,34 @@
+<div class="video-frame">
+  <video ref:video class="video-content" controls>
+    <source src={{src}} type="application/x-mpegURL">
+  </video>
+</div>
+
+<script>
+  import Hls from 'hls.js'
+  export default {
+    oncreate() {
+      if (Hls.isSupported()) {
+        const hls = new Hls()
+        hls.loadSource(this.get('src'))
+        hls.attachMedia(this.refs.video)
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+  }
+
+  .video-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
