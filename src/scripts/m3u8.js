@@ -18,7 +18,6 @@ function replaceBaseUrl(m3u8, id) {
 
 export function generateUrl(string, type = '') {
   return `data:${type};base64,${btoa(string)}`
-  //return URL.createObjectURL(new Blob([string], { type }))
 }
 
 export function genMasterPlaylist([high, mid, low]) {

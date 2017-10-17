@@ -1,5 +1,5 @@
 <h1>Oretube</h1>
-<Video videoId="test2" videoKey={{key}}/>
+<Video videoId={{id}} videoKey={{key}}/>
 
 <script>
   import config from '../config'
@@ -10,8 +10,7 @@
     },
     data() {
       return {
-        name: config.defaultName,
-        url: config.videoUrl,
+        id: config.videoId,
         key: config.videoKey
       }
     }
