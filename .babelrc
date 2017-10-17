@@ -1,4 +1,3 @@
 {
-  "presets": ["es2015-rollup", "es2016"],
-  "plugins": ["fast-async"]
+  "presets": ["es2015-rollup", "stage-3"]
 }

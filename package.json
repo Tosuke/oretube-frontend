@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-polyfill": "^6.26.0",
     "hls.js": "^0.8.4",
     "svelte": "^1.40.2"
   },
@@ -27,8 +28,8 @@
     "babel-core": "^6.26.0",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-es2016": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "browser-sync": "^2.18.13",
-    "buble": "^0.16.0",
     "fast-async": "^6.3.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3",
@@ -36,9 +37,9 @@
     "prettier": "^1.7.4",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-buble": "^0.16.0",
     "rollup-plugin-commonjs": "^8.2.1",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-svelte": "^3.1.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.3.1",

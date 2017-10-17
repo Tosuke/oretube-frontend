@@ -1,6 +1,7 @@
-import { baseConfig, basePlugins } from './rollup.config.base'
-import buble from 'rollup-plugin-buble'
+import { input, output, plugins } from './rollup.config.base'
 
-export default Object.assign(baseConfig, {
-  plugins: [...basePlugins, buble()],
-})
+export default {
+  input,
+  output,
+  plugins: [...plugins],
+}

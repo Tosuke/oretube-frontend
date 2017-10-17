@@ -1,21 +1,10 @@
 <div class="video-frame">
   <video ref:video class="video-content" controls>
-    <source src={{src}} type="application/x-mpegURL">
-  </video>
+      {{#if src}}
+        <source src={{src}} type="application/x-mpegURL">
+      {{/if}}
+    </video>
 </div>
-
-<script>
-  import Hls from 'hls.js'
-  export default {
-    oncreate() {
-      if (Hls.isSupported()) {
-        const hls = new Hls()
-        hls.loadSource(this.get('src'))
-        hls.attachMedia(this.refs.video)
-      }
-    }
-  }
-</script>
 
 <style scoped>
   .video-frame {
@@ -32,3 +21,33 @@
     height: 100%;
   }
 </style>
+
+<script>
+  import Hls from 'hls.js'
+  import generatePlaylist from '../scripts/m3u8'
+  import config from '../config'
+
+  export default {
+    data() {
+      return {
+        src: null,
+      }
+    },
+    oncreate() {
+      if (Hls.isSupported()) {
+        this.observe('src', src => {
+          if (src) {
+            const hls = new Hls()
+            hls.loadSource(src)
+            hls.attachMedia(this.refs.video)
+          }
+        })
+      }
+
+      generatePlaylist(this.get('videoId'), this.get('videoKey'))
+        .then(src => {
+          this.set({src})
+        })
+    },
+  }
+</script>
