@@ -25,6 +25,7 @@
 <script>
   import Hls from 'hls.js'
   import generatePlaylist from '../scripts/m3u8'
+  import config from '../config'
 
   export default {
     data() {
@@ -36,7 +37,7 @@
       if (Hls.isSupported()) {
         this.observe('src', src => {
           if (src) {
-            const hls = new Hls()
+            const hls = new Hls(config.hls || {})
             hls.loadSource(src)
             hls.attachMedia(this.refs.video)
           }

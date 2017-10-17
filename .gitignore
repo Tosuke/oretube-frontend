@@ -1,5 +1,6 @@
 /node_modules
 /yarn.lock
 /.env
+/config.js
 /public/bundle.js
 /public/bundle.js.map
