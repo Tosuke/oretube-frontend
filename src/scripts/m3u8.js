@@ -1,9 +1,10 @@
 import axios from 'axios'
-import config from '../config'
 
 function fetchPlaylists(id) {
   const promises = ['high', 'mid', 'low'].map(name =>
-    axios.get(`${config.contentBaseUrl}/${id}/${name}.m3u8`).then(r => r.data)
+    axios
+      .get(`${process.env.OT_CONTENT_BASEURL}/${id}/${name}.m3u8`)
+      .then(r => r.data)
   )
   return Promise.all(promises)
 }
@@ -14,7 +15,7 @@ function replaceKeyfile(m3u8, base64key) {
 }
 
 function replaceBaseUrl(m3u8, id) {
-  return m3u8.replace(/\$baseurl/g, `${config.contentBaseUrl}/${id}`)
+  return m3u8.replace(/\$baseurl/g, `${process.env.OT_CONTENT_BASEURL}/${id}`)
 }
 
 export function generateUrl(string, type = '') {

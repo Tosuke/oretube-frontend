@@ -2,7 +2,6 @@
 <Video videoId={{id}} videoKey={{key}}/>
 
 <script>
-  import config from '../config'
   import Video from './Video.html'
   export default {
     components: {
@@ -10,8 +9,8 @@
     },
     data() {
       return {
-        id: config.videoId,
-        key: config.videoKey
+        id: process.env.OT_VIDEO_ID,
+        key: process.env.OT_VIDEO_KEY
       }
     }
   }
