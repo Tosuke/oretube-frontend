@@ -8,8 +8,9 @@ function fetchPlaylists(id) {
   return Promise.all(promises)
 }
 
-function replaceKeyfile(m3u8, keyfileUrl) {
-  return m3u8.replace(/\$keyfile/g, keyfileUrl)
+function replaceKeyfile(m3u8, base64key) {
+  const keyUrl = `data:application/pgp-keys;base64,${base64key}`
+  return m3u8.replace(/\$keyfile/g, keyUrl)
 }
 
 function replaceBaseUrl(m3u8, id) {
@@ -35,10 +36,10 @@ export function genMasterPlaylist([high, mid, low]) {
   return master
 }
 
-export default async function generateValidMasterPlaylistUrl(id, keyfileUrl) {
+export default async function generateValidMasterPlaylistUrl(id, base64key) {
   const playlists = await fetchPlaylists(id).then(plists =>
     plists
-      .map(p => replaceKeyfile(p, keyfileUrl))
+      .map(p => replaceKeyfile(p, base64key))
       .map(p => replaceBaseUrl(p, id))
   )
   return generateUrl(genMasterPlaylist(playlists), 'application/x-mpegURL')
